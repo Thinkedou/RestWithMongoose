@@ -15,6 +15,7 @@ connectDB()
 // localhost:5000/contacts/
 app.use("/contacts",require('./routes/contact'))
 app.use("/flippers",require('./routes/flippers'))
+app.use("/marques",require('./routes/marques'))
 
 
 //run server
