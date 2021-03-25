@@ -17,6 +17,26 @@ router.get("/",(req,res)=>{
     .catch(err=>console.log(err))
 })
 
+// création d'un alias pour le search :
+
+router.get("/search",(req,res)=>{
+
+    const { q }= req.query;
+    let aggregateObj = {
+        $search:{
+            $text:{
+                query:q,
+                path:'nom'
+            }
+        }
+    }
+    console.log(aggregateObj);
+    res.json(aggregateObj)
+})
+
+
+
+
 // sur POST sans id : il s'agit de la création du document
 // localhost:5000/flippers
 // [POST] localhost:5000/flippers
