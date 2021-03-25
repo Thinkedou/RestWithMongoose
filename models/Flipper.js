@@ -9,8 +9,9 @@ const FlipperSchema=new schema({
     prix:{type:Number},
     etat:{type:String},
     coupDeCoeur:{type:Boolean, default:false},
-    dateDeSortie:{type:Date},
+    dateDeSortie:{type:String},
     note:{type:Number},
+    stock:{type:String},
     tags:[String]
 })
 
