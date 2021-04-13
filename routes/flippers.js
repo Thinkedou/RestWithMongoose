@@ -1,7 +1,7 @@
 const express=require('express')
 const router=express.Router()
 
-const Contact=require('../models/Contact')
+const Flipper = require('../models/Flippers')
 
 
 
@@ -9,7 +9,10 @@ const Contact=require('../models/Contact')
 // localhost:5000/contacts/
 // [GET] localhost:5000/contacts/
 router.get("/",(req,res)=>{
-    Contact.find({})
+    const {limit,sort,embed} = req.query;
+    Flipper.find({})
+    .limit(+limit)
+
     .then(contacts=>res.send(contacts))
     .catch(err=>console.log(err))
 })
@@ -18,12 +21,12 @@ router.get("/",(req,res)=>{
 // localhost:5000/contacts
 // [POST] localhost:5000/contacts
 router.post("/",(req,res)=>{
-    const { name,email,phone,isAdmin }= req.body
-    const newContact=new Contact({
-        name,email,phone,isAdmin
+    const { nom,images,description,prix,etat }= req.body
+    const newFlipper=new Flipper({
+         nom,images,description,prix,etat
     })
-    newContact.save() // du mongoose
-    .then(contacts=>res.send(contacts))
+    newFlipper.save() // du mongoose
+    .then(flipper=>res.send(flipper))
     .catch(err=>console.log(err))
 })
 
@@ -33,8 +36,8 @@ router.post("/",(req,res)=>{
 // [GET] localhost:5000/contacts/6055c2a61bcfb139a404b3a0
 router.get("/:_id",(req,res)=>{
     const {_id}=req.params
-    Contact.findOne({_id:_id})
-      .then(contact=>res.send(contact))
+    Flipper.findOne({_id:_id})
+      .then(flipper=>res.send(flipper))
     .catch(err=>console.log(err))
 })
 
@@ -45,7 +48,7 @@ router.put("/:_id",(req,res)=>{
     const {_id}=req.params
 
     const {name,email,phone}=req.body
-    Contact.findOneAndUpdate({_id},{name,email,phone})
+    Flipper.findOneAndUpdate({_id},{name,email,phone})
     .then(contact=>res.send(contact))
     .catch(err=>console.log(err))
 })
@@ -55,7 +58,7 @@ router.put("/:_id",(req,res)=>{
 //localhost:5000/contacts/6055c2a61bcfb139a404b3a0
 router.delete("/:_id",(req,res)=>{
     const {_id}=req.params
-    Contact.findOneAndDelete({_id})
+    Flipper.findOneAndDelete({_id})
     .then(contacts=>res.send("success"))
     .catch(err=>console.log(err))
 })

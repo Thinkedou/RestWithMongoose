@@ -2,16 +2,15 @@ const mongoose = require('mongoose')
 const schema   = mongoose.Schema
 
 // https://mongoosejs.com/docs/schematypes.html
-const ContactSchema=new schema({
-    name : { type:String, lowercase: true, required:'un nom est obligatoire:)' },
-    email: { type:String },
-    phone: { type:String },
-    hobbies:[],
-    createdDate:{ type: Date, default: Date.now },
-    isAdmin:{ type: Boolean, default: false },
+const FlipperSchema=new schema({
+    nom   : { type:String, required:'un nom de flipper est obligatoire' },
+    images: [String],
+    description:{type:String},
+    prix:{type:Number},
+    etat:{type:String,lowercase:true}
 })
 
-//
+
 // schema.pre('save', async function save(next) {
 //   if (!this.isModified('password')) return next();
 //   try {
@@ -24,4 +23,4 @@ const ContactSchema=new schema({
 // });
 
 
-module.exports=Contact=mongoose.model('contact',ContactSchema)
+module.exports=Flipper=mongoose.model('flipper',FlipperSchema)
