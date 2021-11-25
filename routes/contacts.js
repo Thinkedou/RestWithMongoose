@@ -26,7 +26,7 @@ router.post("/",async (req,res)=>{
 // localhost:5000/contacts/6055c2a61bcfb139a404b3a0
 // [GET] localhost:5000/contacts/6055c2a61bcfb139a404b3a0
 router.get("/:_id",async (req,res)=>{
-    const allContacts = await ContactService.findAllContacts(req.query);
+    const allContacts = await ContactService.findOneContact(req.query);
     res.json(allContacts)
 })
 
