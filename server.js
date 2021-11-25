@@ -13,7 +13,7 @@ connectDB()
 
 //routes
 // localhost:5000/contacts/
-app.use("/contacts",require('./routes/contact'))
+app.use("/contacts",require('./routes/contacts'))
 app.use("/flippers",require('./routes/flippers'))
 app.use("/marques",require('./routes/marques'))
 

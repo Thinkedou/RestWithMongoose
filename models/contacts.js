@@ -1,12 +1,19 @@
 const mongoose = require('mongoose')
-const schema   = mongoose.Schema
+const {Schema}   = mongoose
 
 // https://mongoosejs.com/docs/schematypes.html
-const ContactSchema=new schema({
+const ContactSchema=new Schema({
     name : { type:String, lowercase: true, required:'un nom est obligatoire:)' },
     email: { type:String },
     phone: { type:String },
-    hobbies:[],
+    hobbies: {
+        type: [
+          {
+            type: String,
+          }
+        ],
+        default: ["kayak"],
+    },
     createdDate:{ type: Date, default: Date.now },
     isAdmin:{ type: Boolean, default: false },
 })
@@ -24,4 +31,4 @@ const ContactSchema=new schema({
 // });
 
 
-module.exports=Contact=mongoose.model('contact',ContactSchema)
+module.exports=mongoose.model('contacts',ContactSchema)

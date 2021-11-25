@@ -1,17 +1,17 @@
 const mongoose = require('mongoose')
-const schema   = mongoose.Schema
+const {Schema}   = mongoose
 
 // https://mongoosejs.com/docs/schematypes.html
-const MarqueSchema=new schema({
+const MarqueSchema=new Schema({
     nom        : { type:String, required:'un nom de marque est obligatoire' },
     logoIcon   : {type:String},
     description: {type:String},
     flippers   : [{
             type     : mongoose.Schema.Types.ObjectId,
-            ref      : 'flipper'
+            ref      : 'flippers'
         }]
 })
 
 
 
-module.exports  = mongoose.model('marque',MarqueSchema)
+module.exports  = mongoose.model('marques',MarqueSchema)

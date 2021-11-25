@@ -1,8 +1,8 @@
-const mongoose = require('mongoose')
-const schema   = mongoose.Schema
+const mongoose   = require('mongoose')
+const {Schema}   = mongoose
 
 // https://mongoosejs.com/docs/schematypes.html
-const FlipperSchema=new schema({
+const FlipperSchema=new Schema({
     nom   : { type:String, required:'un nom de flipper est obligatoire' },
     images: [String],
     description:{type:String},
@@ -23,4 +23,4 @@ const FlipperSchema=new schema({
 // });
 
 
-module.exports=Flipper=mongoose.model('flipper',FlipperSchema)
+module.exports=mongoose.model('flippers',FlipperSchema)
