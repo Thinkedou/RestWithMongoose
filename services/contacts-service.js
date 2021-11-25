@@ -22,9 +22,9 @@ const exposeServices={
     },
     // TODO: filter & embed
     findOneContact:async function(query){
-      let {id} = query;
+      let {_id} = query;
       try {
-        let    auth = await Contacts.findOne({_id:id}).exec();
+        let    auth = await Contacts.findOne({_id}).exec();
         return auth;
       } catch (err) {
           return err;

@@ -34,7 +34,6 @@ router.get("/:_id",async (req,res)=>{
 // sur PUT avec id : l'édition d'un document
 // localhost:5000/contacts/6055c2a61bcfb139a404b3a0
 router.put("/:_id",async (req,res)=>{
-
     res.json({msg:'PUT id'})
 })
 
